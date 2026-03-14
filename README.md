@@ -5,7 +5,7 @@
 - `test_model_api.py`：测试 `/chat/completions` 和 `/messages` 接口。
 - `mock_model_api_server.py`：本地 mock 服务，方便联调和回归验证。
 
-## 快速使用
+## 快速开始
 
 1. 基于示例文件创建本地配置：
 
@@ -39,8 +39,6 @@ python3 test_model_api.py
 
 - `.env`：本地默认配置，脚本启动时会自动加载。
 - `.env.example`：示例模板，便于复制到新环境。
-
-`.env` 已加入 `.gitignore`，默认不应提交真实密钥。
 
 当前支持的环境变量：
 
@@ -85,14 +83,3 @@ python3 test_model_api.py
 ```bash
 python3 test_model_api.py --api-key test-key --base-url http://127.0.0.1:8765 --endpoint both
 ```
-
-## 一个典型联调流程
-
-1. 启动本地 mock 服务。
-2. 运行测试脚本确认两个端点都返回 `200`。
-3. 切换 `.env` 中的 `BASE_URL` 和 `API_KEY`，再对真实服务执行相同测试。
-
-## 说明
-
-- 如果你的 `/messages` 接口兼容 Anthropic Messages API，通常仍需要 `ANTHROPIC_VERSION`。
-- 如果真实服务路径带 `/v1` 前缀，请把 `BASE_URL` 写成类似 `http://host:port/v1`。
